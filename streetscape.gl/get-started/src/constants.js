@@ -17,7 +17,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-import {CarMesh} from 'streetscape.gl';
+import { CarMesh } from 'streetscape.gl';
 
 /* eslint-disable camelcase */
 // export const MAPBOX_TOKEN = process.env.MapboxAccessToken; // eslint-disable-line
@@ -26,32 +26,38 @@ export const MAPBOX_TOKEN = 'pk.eyJ1IjoiZnVkb3Vkb3UiLCJhIjoiY2toNGEwdWJjMG1saTJ0
 export const MAP_STYLE = 'mapbox://styles/mapbox/satellite-streets-v11';
 
 export const XVIZ_CONFIG = {
-  PLAYBACK_FRAME_RATE: 10,
-  ALLOW_MISSING_PRIMARY_POSE: true
+	PLAYBACK_FRAME_RATE: 10,
+	ALLOW_MISSING_PRIMARY_POSE: true,
 };
 
 export const CAR = CarMesh.sedan({
-  origin: [1.08, -0.32, 0],
-  length: 4.3,
-  width: 2.2,
-  height: 1.5,
-  color: [160, 160, 160]
+	origin: [1.08, -0.32, 0],
+	length: 4.3,
+	width: 2.2,
+	height: 1.5,
+	color: [255, 0, 0],
 });
 
 export const APP_SETTINGS = {
-  viewMode: {
-    type: 'select',
-    title: 'View Mode',
-    data: {TOP_DOWN: 'Top Down', PERSPECTIVE: 'Perspective', DRIVER: 'Driver'}
-  },
-  showTooltip: {
-    type: 'toggle',
-    title: 'Show Tooltip'
-  }
+	viewMode: {
+		type: 'select',
+		title: 'View Mode',
+		data: { TOP_DOWN: 'Top Down', PERSPECTIVE: 'Perspective', DRIVER: 'Driver' },
+	},
+	showTooltip: {
+		type: 'toggle',
+		title: 'Show Tooltip',
+	},
+};
+
+const COLOR_MODE = {
+	default: 'default',
+	elevation: 'elevation',
+	distance_to_vehicle: 'distance_to_vehicle',
 };
 
 export const XVIZ_STYLE = {
-  '/tracklets/objects': [{name: 'selected', style: {fill_color: '#ff8000aa'}}],
-  '/tracklets/label': [{style: {fill_color: '#00008B'}}],
-  '/lidar/points': [{style: {point_color_mode: 'ELEVATION'}}]
+	'/tracklets/objects': [{ name: 'selected', style: { fill_color: '#ff8000aa' } }],
+	'/tracklets/label': [{ style: { fill_color: '#00008B' } }],
+	'/lidar/points': [{ style: { point_color_mode: COLOR_MODE.distance_to_vehicle } }],
 };
